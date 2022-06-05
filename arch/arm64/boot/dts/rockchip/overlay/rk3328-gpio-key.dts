@@ -18,7 +18,7 @@
 				encswitch: key {
 					label = "ENC_PRESS";
 					linux,code = <28>;
-					gpios = <&gpio2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
+					gpios = <&gpio1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
 					status = "okay";
 				};
 			};
