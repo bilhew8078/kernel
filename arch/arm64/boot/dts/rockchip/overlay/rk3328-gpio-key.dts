@@ -9,6 +9,19 @@
 	compatible = "rockchip,rk3328";
 
 	fragment@0 {
+		target = <&pinctrl>;
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <&eswitch>;
+			switch {
+				eswitch: eswitch {
+					rockchip,pins =
+						<1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
+				};
+			};
+	};
+
+	fragment@1 {
 		target-path = "/";
 		__overlay__ {
 			gpio_keys: encoderswitch@0 {
