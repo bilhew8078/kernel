@@ -17,6 +17,7 @@
 				};
 			};
 		};
+	};
 
 	fragment@1 {
 		target-path = "/";
