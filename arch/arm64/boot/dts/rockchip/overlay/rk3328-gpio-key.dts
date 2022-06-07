@@ -9,16 +9,27 @@
 	compatible = "rockchip,rk3328";
 
 	fragment@0 {
+		target = <&pinctrl>;
+		__overlay__ {
+			gkeys: gkeys {
+				rot_but: rot_but {
+					rockchip,pins=<1 RK_PD4 0 &pcfg_pull_up>;
+				};
+			};
+		};
+
+	fragment@1 {
 		target-path = "/";
 		__overlay__ {
 			gpio_keys: encoderswitch@0 {
 				compatible = "gpio-keys";
 				pinctrl-names = "default";
+				pinctrl-0 = <&rot_but>;
 
 				encswitch: key {
 					label = "ENC_PRESS";
 					linux,code = <28>;
-					gpios = <&gpio1 RK_PD4 &pcfg_pull_up>;
+					gpios = <&gpio1 RK_PD4 0x10>;
 					status = "okay";
 				};
 			};
