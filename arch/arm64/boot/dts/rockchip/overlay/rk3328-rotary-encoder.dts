@@ -29,7 +29,7 @@
 				pinctrl-names = "default";
 				pinctrl-0 = <&rotarypins>;
 				interrupt_parent = <&gpio2>;
-				interrupts = <RK_PD3 (IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING)>;
+				interrupts = <RK_PD3 3> <RK_PA3 3>;
 				gpios = <&gpio2 RK_PD3 0>, <&gpio2 RK_PA3 0>;
 				rotary-encoder,relative-axis;
 				linux,axis = <0>; /* REL_X */
