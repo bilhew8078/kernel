@@ -13,7 +13,7 @@
 		__overlay__ {
 			gkeys: gkeys {
 				rot_but: rot_but {
-					rockchip,pins=<1 RK_PD4 0 &pcfg_pull_up>;
+					rockchip,pins=<1 RK_PD4 0 &pcfg_input_high>;
 				};
 			};
 		};
