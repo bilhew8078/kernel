@@ -1,4 +1,8 @@
-// Device tree overlay for GPIO connected rotary encoder.
+// Device tree overlay for GPIO connected rotary encoder for NEV9mini
+// Hewlett - June 2022
+// Encoder inputs on Header pins 15 (A) and 13 (B)
+// Note that pin 15 is GPIO Bank 0  pin 13 is GPIO Bank 2
+
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/rockchip.h>
 
@@ -14,7 +18,7 @@
 			rotenc: rotenc {
 				rotarypins: rotarypins {
 					rockchip,pins =
-						<2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>,
+						<0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>,
 						<2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
 				};
 			};
@@ -28,10 +32,9 @@
 				compatible = "rotary-encoder";
 				pinctrl-names = "default";
 				pinctrl-0 = <&rotarypins>;
-				gpios = <&gpio2 RK_PD3 0>, <&gpio2 RK_PA3 0>;
+				gpios = <&gpio0 RK_PD3 0>, <&gpio2 RK_PA3 0>;
 				rotary-encoder,relative-axis;
-				linux,axis = <6>; /* REL_X */
-				rotary-encoder,encoding = "gray";
+				linux,axis = <0>; /* REL_X */
 				rotary-encoder,steps-per-period = <1>;
 				status = "okay";
 			};

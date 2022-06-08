@@ -342,10 +342,6 @@ static int rotary_encoder_probe(struct platform_device *pdev)
 		dev_err(dev, "unable to request IRQ %d\n", encoder->irq_a);
 		goto exit_free_gpio_b;
 	}
-	else
-	{
-		dev_err(dev, "request ROT-ENC IRQ_A SUCCESS!!! %d\n", encoder->irq_a);
-	}
 
 	err = request_irq(encoder->irq_b, handler,
 			  IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
