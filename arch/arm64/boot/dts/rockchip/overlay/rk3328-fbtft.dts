@@ -62,7 +62,7 @@
 				0x01000029>;
 			gamma = "D0 00 14 15 13 2C 42 43 4E 09 16 14 18 21\nD0 00 14 15 13 0B 43 55 53 0C 17 14 23 20";
 			reset-gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
-			dc-gpios = <gpio2 RK_PC2  GPIO_ACTIVE_HIGH>;
+			dc-gpios = <&gpio2 RK_PC2  GPIO_ACTIVE_HIGH>;
 			rotate = <90>;
 			txbuflen = <81920>;
 			};
