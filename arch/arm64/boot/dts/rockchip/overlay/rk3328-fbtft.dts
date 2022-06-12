@@ -1,0 +1,73 @@
+/*
+ * Device Tree overlay for fbtft drivers
+ * Based on Raspberry Pi overlay
+ * Modified for Rock Pi E by WEH - June 2022
+ */
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/rockchip.h>
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "rockchip,rk3328";
+
+	displaypin_fragment: fragment@0 {
+		target = <&pinctrl>;
+		__overlay__ {
+			lcdreset: lcdreset {
+				rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+			};
+			lcddc: lcddc {
+				rockchip,pins = <2 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+			};
+
+
+		};
+	};
+
+// I don't think this is needed:
+//	spidev_fragment: fragment@100 {
+//		target-path = "spi0/spidev@0";
+//		__overlay__ {
+//			status = "disabled";
+//		};
+//	};
+
+	display_fragment: fragment@1 {
+		target = <&spi0>;
+		__overlay__ {
+			/* needed to avoid dtc warning */
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			display: display@0{
+				compatible = "sitronix,st7789v";
+				reg = <0>;
+				fps = <30>;
+				buswidth = <8>;
+				spi-max-frequency = <48000000>;
+			init = <0x01000011
+				0x02000078
+				0x0100003A 0x05
+				0x010000B2 0x0C 0x0C 0x00 0x33 0x33
+				0x010000B7 0x35
+				0x010000C2 0x01 0xFF
+				0x010000C3 0x17
+				0x010000C4 0x20
+				0x010000BB 0x17
+				0x010000C5 0x20
+				0x010000D0 0xA4 0xA1
+				0x01000029>;
+			gamma = "D0 00 14 15 13 2C 42 43 4E 09 16 14 18 21\nD0 00 14 15 13 0B 43 55 53 0C 17 14 23 20";
+			reset-gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
+			dc-gpios = <gpio2 RK_PC2  GPIO_ACTIVE_HIGH>;
+			rotate = <90>;
+			txbuflen = <81920>;
+			};
+		};
+	};
+
+
+};
