@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 
 echo
 echo "************ Debian OS update installer for Rock Pi E ******
