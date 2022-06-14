@@ -56,7 +56,7 @@
 				reg = <0>;
 				fps = <30>;
 				buswidth = <8>;
-				spi-max-frequency = <48000000>;
+				spi-max-frequency = <10000000>;
 				init = <0x01000011
 					0x02000078
 					0x0100003A 0x05
