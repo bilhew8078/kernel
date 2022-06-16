@@ -68,6 +68,7 @@
 					0x010000BB 0x17
 					0x010000C5 0x20
 					0x010000D0 0xA4 0xA1
+					0x01000021
 					0x01000029>;
 			gamma = "D0 00 14 15 13 2C 42 43 4E 09 16 14 18 21\nD0 00 14 15 13 0B 43 55 53 0C 17 14 23 20";
 			reset-gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
@@ -75,7 +76,7 @@
 			width = <240>;
 			height = <320>;
 			rotate = <90>;
-			bgr = <1>;
+			bgr = <0>;
 			bpp = <16>;
 			txbuflen = <153600>;
 			debug = <7>;
